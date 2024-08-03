@@ -6,14 +6,11 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #f0f0f0;
+  background-color: #dedada;
 }
 
 /* Container for the main app content */
-.App {
-  text-align: center;
-  padding: 20px;
-}
+
 
 /* Header Styles */
 .App-header {
