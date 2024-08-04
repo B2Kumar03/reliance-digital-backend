@@ -8,6 +8,8 @@ import Panel from "./components/Pannel";
 import Footer from "./components/Footer";
 import MobileSlider from "./components/MobileSlider";
 import ProductDetail from "./components/ProductDetails";
+import Register from "./components/Register";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
       </conatainer>
     
       <Footer/>
+      <Register/>
+      <Login/>
     </div>
   );
 }
