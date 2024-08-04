@@ -6,6 +6,8 @@ import CustomSlider from "./components/CustomSlider";
 import Image from "./components/Image";
 import Panel from "./components/Pannel";
 import Footer from "./components/Footer";
+import MobileSlider from "./components/MobileSlider";
+import ProductDetail from "./components/ProductDetails";
 
 function App() {
   return (
@@ -17,6 +19,10 @@ function App() {
       <Panel/>
       <Image/>
       <CustomSlider/>
+      <conatainer className="bg-white max-w-full ">
+      <MobileSlider/>
+      </conatainer>
+    
       <Footer/>
     </div>
   );

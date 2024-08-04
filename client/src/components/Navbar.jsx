@@ -20,6 +20,7 @@ import {
   FaHeadphones,
   FaTv,
   FaMobileAlt,
+  FaChevronDown,
 } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 
@@ -40,6 +41,9 @@ export const Navbar = () => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [cart, setCart] = useState([1]);
+  const [isCartOpen, setCartOpen] = useState(false);
+  const [isLoginHovered, setLoginHovered] = useState(false);
 
   const toggleDrawer = () => {
     setDrawerOpen(!isDrawerOpen);
@@ -62,6 +66,24 @@ export const Navbar = () => {
   const handleSuggestionClick = (suggestion) => {
     setSearchTerm(suggestion);
     setSuggestions([]);
+  };
+
+  const handleCartMouseEnter = () => {
+    if (cart.length > 0) {
+      setCartOpen(true);
+    }
+  };
+
+  const handleCartMouseLeave = () => {
+    setCartOpen(false);
+  };
+
+  const handleLoginMouseEnter = () => {
+    setLoginHovered(true);
+  };
+
+  const handleLoginMouseLeave = () => {
+    setLoginHovered(false);
   };
 
   return (
@@ -138,15 +160,68 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="hidden md:flex items-center space-x-4 pr-4">
-          <button className="flex items-center text-white bg-transparent border-none outline-none hover:bg-transparent hover:text-white">
-            <FaShoppingCart className="mr-1" />
-            Cart
-          </button>
+          <div
+            className="relative"
+            onMouseEnter={handleCartMouseEnter}
+            onMouseLeave={handleCartMouseLeave}
+          >
+            <button className="flex items-center text-white bg-transparent border-none outline-none hover:bg-transparent hover:text-white">
+              <FaShoppingCart className="mr-1" />
+              Cart
+            </button>
+            {isCartOpen && cart.length > 0 && (
+              <div className="absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg z-50">
+                <ul className="py-1">
+                  {cart.map((item, index) => (
+                    <li
+                      key={index}
+                      className="px-4 py-2 text-gray-800 hover:bg-gray-200"
+                    >
+                      Item {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
           <div className="border-r border-gray-300 h-6"></div>
-          <button className="flex items-center text-white bg-transparent border-none outline-none hover:bg-transparent hover:text-white">
-            <FaUser className="mr-1" />
-            Login
-          </button>
+          <div
+            className="relative"
+            onMouseEnter={handleLoginMouseEnter}
+            onMouseLeave={handleLoginMouseLeave}
+          >
+            <button className="flex items-center text-white bg-transparent border-none outline-none hover:bg-transparent hover:text-white">
+              <FaUser className="mr-1" />
+              Login
+            </button>
+            {isLoginHovered && (
+              <div className="absolute right-0 mt-1 w-48 bg-white rounded-md shadow-lg z-50">
+                <ul className="py-1">
+                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    My Profile
+                  </li>
+                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    My Orders
+                  </li>
+                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    My Address
+                  </li>
+                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    My Wishlist
+                  </li>
+                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    ROne Loyalty Points
+                  </li>
+                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    My Credits
+                  </li>
+                  <li className="px-4 py-2 text-gray-800 hover:bg-gray-200">
+                    Logout
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
 
@@ -174,78 +249,87 @@ export const Navbar = () => {
                 <MdClose size={24} />
               </button>
             </div>
-            <ul className="p-4">
-              <li className="py-2 flex items-center space-x-2">
-                <FaUser />
-                <a href="#" className="text-gray-800">
-                  Login | Register
-                </a>
+            <ul className="py-2">
+              <li className="border-b border-gray-300">
+                <button
+                  className="flex items-center justify-between w-full p-4 text-gray-800 hover:bg-gray-200"
+                  onClick={() => {}}
+                >
+                  <span>Smartphones</span>
+                  <FaChevronDown />
+                </button>
               </li>
-              <li className="py-2 text-gray-500">Categories</li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaMobileAlt />
-                <span>Mobiles & Tablets</span>
+              <li className="border-b border-gray-300">
+                <button
+                  className="flex items-center justify-between w-full p-4 text-gray-800 hover:bg-gray-200"
+                  onClick={() => {}}
+                >
+                  <span>Laptops</span>
+                  <FaChevronDown />
+                </button>
               </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaTv />
-                <span>Televisions</span>
+              <li className="border-b border-gray-300">
+                <button
+                  className="flex items-center justify-between w-full p-4 text-gray-800 hover:bg-gray-200"
+                  onClick={() => {}}
+                >
+                  <span>Televisions</span>
+                  <FaChevronDown />
+                </button>
               </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaHeadphones />
-                <span>Audio</span>
+              <li className="border-b border-gray-300">
+                <button
+                  className="flex items-center justify-between w-full p-4 text-gray-800 hover:bg-gray-200"
+                  onClick={() => {}}
+                >
+                  <span>Headphones</span>
+                  <FaChevronDown />
+                </button>
               </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaTools />
-                <span>Home Appliances</span>
+              <li className="border-b border-gray-300">
+                <button
+                  className="flex items-center justify-between w-full p-4 text-gray-800 hover:bg-gray-200"
+                  onClick={() => {}}
+                >
+                  <span>Home Appliances</span>
+                  <FaChevronDown />
+                </button>
               </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaDesktop />
-                <span>Computers</span>
+              <li className="border-b border-gray-300">
+                <button
+                  className="flex items-center justify-between w-full p-4 text-gray-800 hover:bg-gray-200"
+                  onClick={() => {}}
+                >
+                  <span>Cameras</span>
+                  <FaChevronDown />
+                </button>
               </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaCamera />
-                <span>Cameras</span>
+              <li className="border-b border-gray-300">
+                <button
+                  className="flex items-center justify-between w-full p-4 text-gray-800 hover:bg-gray-200"
+                  onClick={() => {}}
+                >
+                  <span>Kitchen Appliances</span>
+                  <FaChevronDown />
+                </button>
               </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaBlender />
-                <span>Kitchen Appliances</span>
+              <li className="border-b border-gray-300">
+                <button
+                  className="flex items-center justify-between w-full p-4 text-gray-800 hover:bg-gray-200"
+                  onClick={() => {}}
+                >
+                  <span>Personal Care</span>
+                  <FaChevronDown />
+                </button>
               </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaHeartbeat />
-                <span>Personal Care</span>
-              </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaPlug />
-                <span>Accessories</span>
-              </li>
-              <li className="py-2 text-gray-500">Help Section</li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaShoppingCart />
-                <span>Cart</span>
-              </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaMapMarkerAlt />
-                <span>Find a Store</span>
-              </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaPhone />
-                <span>Contact Us</span>
-              </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaQrcode />
-                <span>Scanner</span>
-              </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaBook />
-                <span>Buying Guides</span>
-              </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaSitemap />
-                <span>Site Info</span>
-              </li>
-              <li className="py-2 flex items-center space-x-2">
-                <FaComments />
-                <span>Policies</span>
+              <li className="border-b border-gray-300">
+                <button
+                  className="flex items-center justify-between w-full p-4 text-gray-800 hover:bg-gray-200"
+                  onClick={() => {}}
+                >
+                  <span>Accessories</span>
+                  <FaChevronDown />
+                </button>
               </li>
             </ul>
           </div>

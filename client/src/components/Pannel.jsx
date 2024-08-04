@@ -7,7 +7,16 @@ const Panel = () => {
   const menuItems = [
     {
       title: 'MOBILES & TABLETS',
-      subItems: []
+      subItems: [
+        {
+          title: 'Mobiles',
+          items: ['Smartphones', 'Feature Phones', 'Mobile Accessories']
+        },
+        {
+          title: 'Tablets',
+          items: ['Android Tablets', 'iPads', 'Tablet Accessories']
+        }
+      ]
     },
     {
       title: 'TELEVISIONS',
@@ -40,31 +49,94 @@ const Panel = () => {
     },
     {
       title: 'AUDIO',
-      subItems: []
+      subItems: [
+        {
+          title: 'Headphones',
+          items: ['Over-Ear Headphones', 'In-Ear Headphones', 'Noise-Canceling Headphones']
+        },
+        {
+          title: 'Speakers',
+          items: ['Bluetooth Speakers', 'Smart Speakers', 'Home Theater Systems']
+        }
+      ]
     },
     {
       title: 'HOME APPLIANCES',
-      subItems: []
+      subItems: [
+        {
+          title: 'Refrigerators',
+          items: ['Single Door', 'Double Door', 'Side by Side']
+        },
+        {
+          title: 'Washing Machines',
+          items: ['Front Load', 'Top Load', 'Semi Automatic']
+        }
+      ]
     },
     {
       title: 'COMPUTERS',
-      subItems: []
+      subItems: [
+        {
+          title: 'Laptops',
+          items: ['Gaming Laptops', 'Ultrabooks', 'Notebooks']
+        },
+        {
+          title: 'Desktops',
+          items: ['All-in-One', 'Gaming Desktops', 'Mini PCs']
+        }
+      ]
     },
     {
       title: 'CAMERAS',
-      subItems: []
+      subItems: [
+        {
+          title: 'Digital Cameras',
+          items: ['DSLRs', 'Mirrorless Cameras', 'Point & Shoot']
+        },
+        {
+          title: 'Camera Accessories',
+          items: ['Lenses', 'Tripods', 'Memory Cards']
+        }
+      ]
     },
     {
       title: 'KITCHEN APPLIANCES',
-      subItems: []
+      subItems: [
+        {
+          title: 'Microwave Ovens',
+          items: ['Solo', 'Grill', 'Convection']
+        },
+        {
+          title: 'Juicers & Blenders',
+          items: ['Juicers', 'Mixers', 'Blenders']
+        }
+      ]
     },
     {
       title: 'PERSONAL CARE',
-      subItems: []
+      subItems: [
+        {
+          title: 'Hair Care',
+          items: ['Hair Dryers', 'Hair Straighteners', 'Hair Curlers']
+        },
+        {
+          title: 'Shavers & Trimmers',
+          items: ['Shavers', 'Trimmers', 'Epilators']
+        }
+      ]
     },
     {
       title: 'ACCESSORIES',
-      subItems: []
+      subItems: [
+        {
+          title: 'Mobile Accessories',
+          items: ['Cases & Covers', 'Power Banks', 'Chargers']
+        },
+        {
+          title: 'Computer Accessories',
+          items: ['Keyboards', 'Mice', 'Webcams']
+        }
+      ]
     }
   ];
 
@@ -87,10 +159,10 @@ const Panel = () => {
               )}
             </button>
             {hoveredItem === index && menuItem.subItems.length > 0 && (
-              <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-1 bg-blue-900 shadow-lg z-10 p-4 w-[90%]">
-                <div className="grid grid-cols-4 gap-6">
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-1 bg-blue-900 shadow-lg ml-3 z-10 p-4 w-[90vw]">
+                <div className="flex justify-between space-x-6">
                   {menuItem.subItems.map((subItem, subIndex) => (
-                    <div key={subIndex}>
+                    <div key={subIndex} className="w-1/5">
                       <h3 className="text-white font-bold mb-2">{subItem.title}</h3>
                       <ul className="text-gray-300">
                         {subItem.items.map((item, itemIndex) => (
