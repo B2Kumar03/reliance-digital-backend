@@ -3,7 +3,7 @@ import mongodbConnection from "./db/index.js"
 import app from "./app.js";
 dotenv.config()
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 mongodbConnection()
 .then(() => {
   app.on("error", (err) => {
